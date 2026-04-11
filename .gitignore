@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+.gradle/
+build/
+.idea/
+.vscode/settings.json
