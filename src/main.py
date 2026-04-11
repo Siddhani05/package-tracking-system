@@ -47,3 +47,5 @@ if __name__ == "__main__":
 
     print(system.track_package("PKG001"))
     print("History:", p1.get_history())
+    print("Sender:", p1.sender)
+    print("Receiver:", p1.receiver)
