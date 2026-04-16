@@ -21,6 +21,16 @@ class Package:
         return self.history
 
 
+    def get_details(self):
+    return f"""
+Package Details:
+----------------
+Tracking ID : {self.tracking_id}
+Sender      : {self.sender}
+Receiver    : {self.receiver}
+Status      : {self.status}
+History     : {self.history}
+"""
 class DeliverySystem:
     def __init__(self):
         self.packages = {}
@@ -57,3 +67,4 @@ if __name__ == "__main__":
     print("History:", p1.get_history())
     print("Sender:", p1.sender)
     print("Receiver:", p1.receiver)
+    print(p1.get_details())
