@@ -9,9 +9,10 @@ class Package:
         self.history = []
 
     def update_status(self, new_status):
-        self.history.append(self.status)
-        self.status = new_status
-        print(f"[{self.tracking_id}] Status updated to: {self.status}")
+    from datetime import datetime
+    self.history.append((self.status, datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+    self.status = new_status
+    print(f"[{self.tracking_id}] Status updated to: {self.status}")
 
     def get_status(self):
         return self.status
@@ -29,10 +30,17 @@ class DeliverySystem:
         print(f"Package {package.tracking_id} registered successfully.")
 
     def track_package(self, tracking_id):
-        pkg = self.packages.get(tracking_id)
-        if pkg:
-            return f"Tracking ID: {tracking_id} | Status: {pkg.get_status()}"
-        return "Package not found."
+    pkg = self.packages.get(tracking_id)
+    if pkg:
+        return f"""
+Tracking Details:
+-----------------
+Tracking ID : {tracking_id}
+Status      : {pkg.get_status()}
+Sender      : {pkg.sender}
+Receiver    : {pkg.receiver}
+"""
+    return "Package not found."
 
 
 if __name__ == "__main__":
