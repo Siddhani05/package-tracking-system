@@ -1,0 +1,21 @@
+plugins {
+    id 'base'
+}
+
+task runApp(type: Exec) {
+    group = 'application'
+    description = 'Runs the package tracking system'
+    commandLine 'python', 'src/main.py'
+}
+
+task runTests(type: Exec) {
+    group = 'verification'
+    description = 'Runs all Python unit tests with pytest'
+    commandLine 'python', '-m', 'pytest', 'tests/', '-v'
+}
+
+task fullBuild {
+    group = 'application'
+    description = 'Runs tests then the application'
+    dependsOn runTests, runApp
+}
